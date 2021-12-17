@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Repair type
+{% endblock %}
+
+{% block beforeContent %}
+  <a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" method="get" action="/beta/v4/repair-description">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      idPrefix: "repair-type-cupboards",
+      name: "repair-type-cupboards",
+      fieldset: {
+        legend: {
+          text: "What best describes the problem?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "Hanging door",
+          text: "Hanging door",
+          id: "repair-type-hanging-cupboards-door",
+          checked: checked("repair-location-hanging-cupboards-door", "hanging cupboards door")
+        },
+        {
+          value: "Missing door",
+          text: "Missing door",
+          id: "repair-type-missing-cupboards-door",
+          checked: checked("repair-location-kitchen-missing-cupboards-door", "missing cupboards door")
+        }
+      ]
+    }) }}
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
